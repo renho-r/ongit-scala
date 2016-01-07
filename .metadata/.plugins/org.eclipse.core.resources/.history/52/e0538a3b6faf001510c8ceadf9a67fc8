@@ -1,0 +1,9 @@
+package com.renho.scala
+
+object TestForLoop {
+    def main(args: Array[String]): Unit = {
+        for(var a <- 1 to 100) {
+            println(a);
+        }
+    }
+}

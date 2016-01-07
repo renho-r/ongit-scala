@@ -1,0 +1,6 @@
+package com.renho.scala.break
+
+object TestBreak {
+    def main(args: Array[String]): Unit = {
+    }
+}

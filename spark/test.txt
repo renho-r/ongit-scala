@@ -1,0 +1,30 @@
+﻿wget http://download.labs.sogou.com/dl/sogoulabdown/SogouQ/SogouQ.mini.tar.gz
+var textFile = sc.textFile("/home/hadoop/SogouQ.sample")
+textFile.count
+textFile.collect().foreach(println)
+textFile.map(_.split("\t"))
+textFile.map(_.split("\t")).collect().foreach(s => println(s(0)))
+textFile.map(_.split("\t")).collect().foreach(s => println(s(1)))
+textFile.map(_.split("\t")).collect().foreach(s => println(s(2)))
+textFile.map(_.split("\t")).collect().foreach(s => println(s(3)))
+textFile.map(_.split("\t")).collect().foreach(s => println(s(5)))
+
+var fRdd = textFile.map(_.split("\t")).filter(_.length == 6)
+fRdd.count
+//搜索结果排名第一同时点击结果排名
+var filteredRdd = fRdd.filter(_(3).toInt == 1).filter(_(4).toInt == 1)
+filteredRdd.count
+filteredRdd.collect().foreach(ss => println(ss(1) + ss(2)))
+//用户ID查询次数排行榜
+var userSTopRdd = fRdd.map(d => (d(1), 1)).reduceByKey((a, b) => (a + b))
+userSTopRdd.count
+userSTopRdd.collect().foreach(println)
+userSTopRdd.collect().foreach(d => println(d._1 + ":" + d._2))
+var sortedRdd = userSTopRdd.map(a => (a._2, a._1)).sortByKey(false).map(a => (a._2, a._1))
+sortedRdd.collect().foreach(println)
+
+sortedRdd.saveAsTextFile("/home/hadoop/result")
+sortedRdd.saveAsTextFile("hdfs://master:9000/spark/out/sogou")
+hadoop dfs -getmerge hdfs://[filename] ***.crc??????????
+
+sortedRdd.take(10)//获取前n个元素

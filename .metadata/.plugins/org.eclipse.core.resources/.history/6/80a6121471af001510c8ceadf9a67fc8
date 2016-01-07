@@ -1,0 +1,6 @@
+package com.renho.scala.forloop
+
+object TestBreak {
+    def main(args: Array[String]): Unit = {
+    }
+}

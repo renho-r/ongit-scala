@@ -6,6 +6,8 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/lib/spark-assembly-1.5.2-hadoop2.6.0.jar!/" />
+      <root url="file://E:/文档/hadoop/spark-1.5.2/spark-1.5.2/core/src/main/scala" />
+      <root url="file://E:/文档/hadoop/spark-1.5.2/spark-1.5.2/core/src/main/scala/org/apache/spark/rdd" />
     </SOURCES>
   </library>
 </component>

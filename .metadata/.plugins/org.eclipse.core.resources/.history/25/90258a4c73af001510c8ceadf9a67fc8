@@ -1,0 +1,30 @@
+package com.renho.scala.functiontest
+
+object FuncTest {
+    //函数
+    def addInt(a: Int, b: Int): Int = {
+        var sum: Int = 0
+        sum = a + b
+        return sum
+    }
+    //过程,不返回任何东西
+    def printMe(): Unit = {
+        println("Hello, Scala!")
+    }
+    //
+    def time() = {
+        println("Getting time in nano seconds")
+        System.nanoTime
+    }
+    def delayed(t: => Long) = {
+        println("In delayed method")
+        println("Param: " + t)
+        t
+    }
+    
+    def main(args: Array[String]): Unit = {
+        println(addInt(1, 100));
+        printMe();
+        delayed(time());
+    }
+}
