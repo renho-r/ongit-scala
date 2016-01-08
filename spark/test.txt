@@ -28,3 +28,27 @@ sortedRdd.saveAsTextFile("hdfs://master:9000/spark/out/sogou")
 hadoop dfs -getmerge hdfs://[filename] ***.crc??????????
 
 sortedRdd.take(10)//获取前n个元素
+
+var sqlContext = new org.apache.spark.sql.SQLContext(sc)
+import sqlContext.implicits._
+case class SoGou(aTime: String, id: Long, qw: String, rnum: Integer, cnum: Integer, url: String)
+var logs = sc.textFile("/home/hadoop/SogouQ.sample").map(_.split("\t")).map(s => SoGou(s(0), s(1).trim.toLong, s(2), s(3).trim.toInt, s(4).trim.toInt, s(5))).toDF()
+logs.count
+logs.first
+var sLogs = logs.sort("cnum")
+var sLogs = logs.sort("cnum")
+var sLogs = logs.sort($"cnum".desc)
+logs.registerTempTable("logsTb")
+var urls = sqlContext.sql("SELECT url FROM logsTb")
+urls.first
+urls.take(10)
+urls.printSchema
+var idCount = sqlContext.sql("SELECT id id, count(*) c FROM logsTb group by id")
+idCount.show
+var temp = sqlContext.sql("SELECT id id, count(*) c FROM logsTb group by id")
+var max = sqlContext.sql("SELECT MAX(temptb.c) from (SELECT id id, count(*) c FROM logsTb group by id) temptb")
+var ob = sqlContext.sql("SELECT * from (SELECT id id, count(*) c FROM logsTb group by id) temptb order by c desc")
+
+var mu = sqlContext.sql("SELECT * FROM logsTb where id = 1011517038707826")
+var rec = sqlContext.sql("SELECT * FROM logsTb where rnum = cnum")
+var rec = sqlContext.sql("SELECT * FROM logsTb where rnum = cnum and rnum = 1")

@@ -28,7 +28,6 @@ object SparkWordCount {
 					b
 				}
 			)
-		println(result1);
-		result0.lookup()
+		println(result1)
 	}
 }
