@@ -18,6 +18,7 @@
 // scalastyle:off println
 package com.renho
 
+import org.apache.spark.deploy.worker.Worker
 import org.apache.spark._
 
 import scala.math.random
@@ -26,10 +27,15 @@ import scala.math.random
 object SparkPi {
 	def main(args: Array[String]) {
 		val conf = new SparkConf().setAppName("Spark Pi")
+		conf.set("spark.executor.extraJavaOptions", "-Xdebug -Xrunjdwp:transport=dt_socket,address=8005,server=y,suspend=n")
 		System.setProperty("user.name", "hadoop")
 		conf.setMaster("spark://master:7077")
 		val spark = new SparkContext(conf)
 		spark.addJar("file:///d:sparkData/lib/spark-wordcount-in-java-win.jar")
+
+		println("sleep begin.")
+		Thread.sleep(10000) //等待10s，让有足够时间启动driver的remote debug
+		println("sleep end.")
 		val slices = if (args.length > 0) args(0).toInt else 2
 		val n = math.min(100000L * slices, Int.MaxValue).toInt // avoid overflow
 		val count = spark.parallelize(1 until n, slices).map { i =>
