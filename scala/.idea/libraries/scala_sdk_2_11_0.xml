@@ -19,6 +19,9 @@
     <JAVADOC>
       <root url="http://www.scala-lang.org/api/2.11.0/" />
     </JAVADOC>
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.0/scala-library-2.10.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.0/scala-library-2.10.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

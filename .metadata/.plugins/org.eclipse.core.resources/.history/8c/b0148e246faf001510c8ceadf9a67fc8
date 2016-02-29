@@ -1,5 +1,0 @@
-package com.renho.scala
-
-package object forloop {
-  
-}
