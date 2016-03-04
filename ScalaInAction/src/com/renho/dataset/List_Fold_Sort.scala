@@ -12,7 +12,5 @@ object List_Fold_Sort {
     
     println(List(1, -3, 4, 2, 6) sortWith (_ < _))
     println(List(1, -3, 4, 2, 6) sortWith (_ > _))
-    
   }
-
 }
