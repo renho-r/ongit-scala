@@ -21,8 +21,8 @@ object ListBuffer_Internals {
   def increment_MostEffective(list: List[Int]): List[Int] = {
     import scala.collection.mutable.ListBuffer
     var buffer = new ListBuffer[Int]
-	for(element <- list) buffer += element + 1
-	buffer.toList
-  }
+  	for(element <- list) buffer += element + 1
+  	  buffer.toList
+    }
 
 }

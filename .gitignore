@@ -1,3 +1,5 @@
 /idea-spark-source
 /lucenescala
 /.metadata
+/AkkaWorkspace/target
+/akka-scala/target
