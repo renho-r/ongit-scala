@@ -7,3 +7,5 @@ class Word(val word: String, val count: Int)
 case class Result()
 class MapData(val dataList: List[Word])
 class ReduceData(val reduceDataMap: Map[String, Int])
+
+case class BackResult()
