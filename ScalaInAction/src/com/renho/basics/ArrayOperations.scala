@@ -5,7 +5,7 @@ object ArrayOperations {
     val arr = Array(1, 2, 3, 4, 5)
     println(arr)
     arr.foreach(println)
-    for(a <- 0 until arr.length) println(arr(a))
-    for(a <- arr) println(a)
+    for (a <- 0 until arr.length) println(arr(a))
+    for (a <- arr) println(a)
   }
 }
